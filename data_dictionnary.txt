@@ -1,0 +1,75 @@
+dim_demographics
+Primary key  = City, state_code, Race
+ |-- City (String): Name of the city
+ |-- State (String): Name of the state
+ |-- median_age (double): Median age for the city
+ |-- male_population (double): Size of the male population
+ |-- female_population (double): Size of the female population
+ |-- total_population (long) : Total population
+ |-- foreign_born (double): Number of foreign born residents
+ |-- average_household_size (double): Average size of a household
+ |-- state_code (String): Two letter state code
+ |-- Race (String): Racial category selected by respondants. Possible values are:
+			Hispanic or Latino
+			White
+			Asian
+			Black or African-American
+			American Indian and Alaska Native
+ |-- Count (long): Number of respondants (ie Size) for the combination City, State, Race
+
+dim_time
+Primary key: date
+ |-- date (string): date in the format yyyy-mm-dd
+ |-- year (integer): year for the given date, available for aggregation
+ |-- month (integer): month for the given date, available for aggregation
+ |-- day (integer): day for the given date, available for aggregation
+ |-- week (integer): week for the given date, available for aggregation (values between 0 and 52)
+ |-- weekday (integer): weekday for the given date, available for aggregation (values between 0 and 6)
+ |-- year_day (integer): year for the given date, available for aggregation
+
+dim_airports
+Primary key: ident
+ |-- ident (string): Airport identified
+ |-- type (string): Type of airport. Possible values are:
+		large_airport
+		medium_airport
+		small_airport
+ |-- name (string): Name of the airport 
+ |-- elevation_ft (string):  Elevation of the airport
+ |-- state (string): State where the airport is located
+ |-- municipality (string): Name of the city closest to the airport
+ |-- iata_code (string): iata_code that appears to airplane tickets and baggages
+
+dim_temperature
+Primary key: date, city
+ |-- date (timestamp): date when the temperature was registered
+ |-- city (string): city where the termperature was registered
+ |-- average_temperature (double): average temperature recorded for the day in the specified city
+ |-- average_termperature_uncertainty (double): average uncertainty recored 
+
+fact_immigration
+Primary key: cicid
+ |-- cicid (double): Unique identifier for each traveller
+ |-- citizenship_country (string): Traveller's country of citizenship
+ |-- residence_country (string): Traveller's country of residence
+ |-- city (string): City where the entry port of the traveller is located
+ |-- state (string): State where the entry port of the traveller is located
+ |-- arrival_date (date): Traveller's arrival date
+ |-- departure_date (string): Traveller's departure date, if known
+ |-- age (double):  Traveller's age
+ |-- visa_type (string): aggregate visa type. Possible values are:
+		Business,
+		Pleasure,
+		Student,
+ |-- detailed_visa_type (string): Detailed visa types. Numerous values are available. Not all could be identified:
+		B1: B1 visa is for business visits valid for up to a year
+		B2: B2 visa is for pleasure visits valid for up to a year
+		CP: could not find a definition
+		E2: E2 investor visas allows foreign investors to enter and work inside of the United States based on a substantial investment
+		F1: F1 visas are used by non-immigrant students for Academic and Language training Courses. 
+		F2: F2 visas are used by the dependents of F1 visa holders
+		GMT: could not find a definition
+		M1: for students enrolled in non-academic or “vocational study”. Mechanical, language, cooking classes, etc...
+		WB: Waiver Program (WT/WB Status) travel to the United States for tourism or business for stays of 90 days or less without obtaining a visa.
+		WT: Waiver Program (WT/WB Status) travel to the United States for tourism or business for stays of 90 days or less without obtaining a visa.
+ 
