@@ -1,4 +1,4 @@
-libname library 'Your file location' ;
+flibname library 'Your file location' ;
 proc format library=library ;
 
 /* I94YR - 4 digit year */
